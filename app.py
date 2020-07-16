@@ -1,4 +1,5 @@
 import os
+import requests
 
 from requests_html import HTMLSession
 from flask import Flask, render_template, abort
@@ -12,7 +13,8 @@ def index(url):
         s = HTMLSession()
         try:
             r = s.get(url)
-        except:
+        except (requests.exceptions.ConnectionError,
+                requests.exceptions.MissingSchema):
             abort(404)
         results = r.html.find("meta")
         r_list = [result.attrs for result in results]
