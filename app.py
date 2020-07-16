@@ -1,7 +1,7 @@
 import os
 
 from requests_html import HTMLSession
-from flask import Flask, render_template
+from flask import Flask, render_template, abort
 
 app = Flask(__name__)
 
@@ -10,7 +10,10 @@ app = Flask(__name__)
 def index(url):
     if url:
         s = HTMLSession()
-        r = s.get(url)
+        try:
+            r = s.get(url)
+        except:
+            abort(404)
         results = r.html.find("meta")
         r_list = [result.attrs for result in results]
         return render_template("index.html", results=r_list)
