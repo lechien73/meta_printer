@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css" />
+	<title>Site Meta Data</title>
+</head>
+
+<body>
+	<header>
+		<img src="{{ url_for('static', filename='img/logo.png') }}" alt="CI logo">
+		<h1>Meta Data</h1>
+		<p>
+			Here is the detected meta data from your URL
+		</p>
+	</header>
+	<br>
+	<main>
+		<table>
+			<thead>
+				<tr>
+					<th>Attribute</th>
+					<th>Value</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for meta in results %}
+				{% for key, value in meta.items() %}
+				<tr>
+					<td>{{ key }}</td>
+					<td>{{ value }}</td>
+				</tr>
+				{% endfor %}
+				{% endfor %}
+			</tbody>
+		</table>
+	</main>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css" />
+	<title>Site Meta Data</title>
+</head>
+
+<body>
+	<header>
+		<img src="{{ url_for('static', filename='img/logo.png') }}" alt="CI logo">
+		<h1>Error</h1>
+		<p>
+			Supply the URL of your site after the main URL.
+		</p>
+		{% if e %}
+		<p> In addition, the following error occurred: {{ e.code }}</p>
+		{% endif %}
+	</header>
+	<br>
+
+</body>
+
+</html>
