@@ -14,11 +14,12 @@
 		<img src="{{ url_for('static', filename='img/logo.png') }}" alt="CI logo">
 		<h1>Meta Data</h1>
 		<p>
-			Here is the detected meta data from your URL
+			Here is the detected meta data from your URL. A separate table is shown for each <code>meta</code> tag.
 		</p>
 	</header>
 	<br>
 	<main>
+		{% for meta in results %}
 		<table>
 			<thead>
 				<tr>
@@ -27,17 +28,20 @@
 				</tr>
 			</thead>
 			<tbody>
-				{% for meta in results %}
 				{% for key, value in meta.items() %}
 				<tr>
 					<td>{{ key }}</td>
-					<td>{{ value }}</td>
+					<td style="min-width: 800px;">{{ value }}</td>
 				</tr>
-				{% endfor %}
 				{% endfor %}
 			</tbody>
 		</table>
+		<br />
+		{% endfor %}
 	</main>
+		<footer>
+			&copy; Code Institute
+		</footer>
 </body>
 
 </html>
