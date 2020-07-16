@@ -16,8 +16,8 @@
 		<p>
 			Supply the URL of your site after the main URL.
 		</p>
-		{% if e %}
-		<p> In addition, the following error occurred: {{ e.code }}</p>
+		{% if error %}
+		<p> In addition, the following error occurred: {{ error.code }}</p>
 		{% endif %}
 	</header>
 	<br>

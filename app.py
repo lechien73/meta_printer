@@ -20,7 +20,7 @@ def index(url):
         r_list = [result.attrs for result in results]
         return render_template("index.html", results=r_list)
     else:
-        return render_template("error.html")
+        return render_template("error.html", error=None)
 
 
 @app.errorhandler(404)
